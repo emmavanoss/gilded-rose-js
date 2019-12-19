@@ -4,7 +4,7 @@
   "description": "Gilded Rose kata in Javascript with Jasmine",
   "scripts": {
     "test": "jasmine",
-    "lint": "eslint spec/"
+    "lint": "eslint spec/ src/"
   },
   "repository": {
     "type": "git",

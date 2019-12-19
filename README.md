@@ -8,3 +8,5 @@ Original legacy code from
 ## Setup
 
 * run `npm install` to install dependencies
+* to run tests: `npm test`
+* to run eslint: `npm run lint` (follows Airbnb style)
