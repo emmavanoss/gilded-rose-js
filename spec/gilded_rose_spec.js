@@ -102,5 +102,3 @@ describe('Gilded Rose', () => {
     });
   });
 });
-
-
