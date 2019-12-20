@@ -1,6 +1,7 @@
 const { Shop } = require('../src/gilded_rose.js');
 const { Item } = require('../src/item.js');
 const { BackstagePasses } = require('../src/backstage_passes.js');
+const { Sulfuras } = require('../src/sulfuras.js');
 
 describe('Gilded rose', () => {
   describe('Backstage passes', () => {
@@ -46,6 +47,22 @@ describe('Gilded rose', () => {
       const gildedRose = new Shop([new BackstagePasses(itemName, 5, 10)]);
       const items = gildedRose.updateQuality();
       expect(items[0].sellIn).toEqual(4);
+    });
+  });
+
+  describe('Sulfuras', () => {
+    const itemName = 'Sulfuras, Hand of Ragnaros';
+
+    it('should never change in quality', () => {
+      const gildedRose = new Shop([new Sulfuras(itemName, 5, 80)]);
+      const items = gildedRose.updateQuality();
+      expect(items[0].quality).toEqual(80);
+    });
+
+    it('should never change the sellIn value', () => {
+      const gildedRose = new Shop([new Sulfuras(itemName, 5, 80)]);
+      const items = gildedRose.updateQuality();
+      expect(items[0].sellIn).toEqual(5);
     });
   });
 });
