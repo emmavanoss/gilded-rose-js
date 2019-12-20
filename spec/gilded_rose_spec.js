@@ -8,7 +8,7 @@ describe('Gilded Rose', () => {
   it('calls updateQuality on each item', () => {
     const gildedRose = new Shop([foo]);
     spyOn(foo, 'updateQuality');
-    gildedRose.updateQuality();
+    gildedRose.updateInventory();
     expect(foo.updateQuality).toHaveBeenCalled();
   });
 });

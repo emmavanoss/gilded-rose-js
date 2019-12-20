@@ -3,7 +3,7 @@ class Shop {
     this.items = items;
   }
 
-  updateQuality() {
+  updateInventory() {
     for (const item of this.items) {
       item.updateQuality();
       if (item.name !== 'Sulfuras, Hand of Ragnaros') {
