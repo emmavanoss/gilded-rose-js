@@ -95,7 +95,7 @@ describe('Gilded Rose', () => {
       expect(items[0].quality).toEqual(13);
     });
 
-    it('should set quality to 3 if sellIn is 0', () => {
+    it('should set quality to 0 if sellIn is 0', () => {
       const gildedRose = new Shop([new Item('Backstage passes to a TAFKAL80ETC concert', 0, 10)]);
       const items = gildedRose.updateQuality();
       expect(items[0].quality).toEqual(0);
