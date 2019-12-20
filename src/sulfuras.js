@@ -1,4 +1,4 @@
-const { Item } = require('../src/item.js');
+const { Item } = require('./item.js');
 
 class Sulfuras extends Item {
   updateQuality() {
