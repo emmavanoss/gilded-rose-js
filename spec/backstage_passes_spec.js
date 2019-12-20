@@ -28,16 +28,16 @@ describe('BackstagePasses', () => {
       expect(backstagePasses.quality).toEqual(13);
     });
 
-    // it('should increase quality by 3 if sellIn is 1', () => {
-      // const gildedRose = new Shop([new Item('Backstage passes to a TAFKAL80ETC concert', 1, 10)]);
-      // const items = gildedRose.updateQuality();
-      // expect(items[0].quality).toEqual(13);
-    // });
+    it('should increase quality by 3 if sellIn is 1', () => {
+      const backstagePasses = new BackstagePasses(itemName, 1, 10);
+      backstagePasses.updateQuality();
+      expect(backstagePasses.quality).toEqual(13);
+    });
 
-    // it('should set quality to 0 if sellIn is 0', () => {
-      // const gildedRose = new Shop([new Item('Backstage passes to a TAFKAL80ETC concert', 0, 10)]);
-      // const items = gildedRose.updateQuality();
-      // expect(items[0].quality).toEqual(0);
-    // });
+    it('should set quality to 0 if sellIn is 0', () => {
+      const backstagePasses = new BackstagePasses(itemName, 0, 10);
+      backstagePasses.updateQuality();
+      expect(backstagePasses.quality).toEqual(0);
+    });
   });
 });

@@ -15,6 +15,9 @@ class BackstagePasses extends Item {
         this.quality += 1;
       }
     }
+    if (this.sellIn < 1) {
+      this.quality = 0;
+    }
   }
 }
 
