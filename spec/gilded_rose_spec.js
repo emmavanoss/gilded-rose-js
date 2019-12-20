@@ -29,24 +29,4 @@ describe('Gilded Rose', () => {
       expect(items[0].quality).toEqual(8);
     });
   });
-
-  describe('Aged brie', () => {
-    it('should increase quality by 1', () => {
-      const gildedRose = new Shop([new Item('Aged Brie', 20, 10)]);
-      const items = gildedRose.updateQuality();
-      expect(items[0].quality).toEqual(11);
-    });
-
-    it('should increase quality by 2 when overdue', () => {
-      const gildedRose = new Shop([new Item('Aged Brie', 0, 10)]);
-      const items = gildedRose.updateQuality();
-      expect(items[0].quality).toEqual(12);
-    });
-
-    it('should not increase quality above 50', () => {
-      const gildedRose = new Shop([new Item('Aged Brie', 20, 50)]);
-      const items = gildedRose.updateQuality();
-      expect(items[0].quality).toEqual(50);
-    });
-  });
 });

@@ -2,6 +2,7 @@ const { Shop } = require('../src/gilded_rose.js');
 const { Item } = require('../src/item.js');
 const { BackstagePasses } = require('../src/backstage_passes.js');
 const { Sulfuras } = require('../src/sulfuras.js');
+const { AgedBrie } = require('../src/aged_brie.js');
 
 describe('Gilded rose', () => {
   describe('Backstage passes', () => {
@@ -63,6 +64,28 @@ describe('Gilded rose', () => {
       const gildedRose = new Shop([new Sulfuras(itemName, 5, 80)]);
       const items = gildedRose.updateQuality();
       expect(items[0].sellIn).toEqual(5);
+    });
+  });
+
+  describe('Aged Brie', () => {
+    const itemName = 'Aged Brie';
+
+    it('should increase quality by 1', () => {
+      const gildedRose = new Shop([new AgedBrie(itemName, 20, 10)]);
+      const items = gildedRose.updateQuality();
+      expect(items[0].quality).toEqual(11);
+    });
+
+    it('should increase quality by 2 when overdue', () => {
+      const gildedRose = new Shop([new AgedBrie(itemName, 0, 10)]);
+      const items = gildedRose.updateQuality();
+      expect(items[0].quality).toEqual(12);
+    });
+
+    it('should not increase quality above 50', () => {
+      const gildedRose = new Shop([new AgedBrie(itemName, 20, 50)]);
+      const items = gildedRose.updateQuality();
+      expect(items[0].quality).toEqual(50);
     });
   });
 });
