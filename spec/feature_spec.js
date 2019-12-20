@@ -3,8 +3,37 @@ const { Item } = require('../src/item.js');
 const { BackstagePasses } = require('../src/backstage_passes.js');
 const { Sulfuras } = require('../src/sulfuras.js');
 const { AgedBrie } = require('../src/aged_brie.js');
+const { RegularItem } = require('../src/regular_item.js');
 
 describe('Gilded rose', () => {
+  describe('Regular items', () => {
+    const itemName = 'Foo'
+
+    it('should reduce quality by 1', () => {
+      const gildedRose = new Shop([new RegularItem(itemName, 20, 10)]);
+      const items = gildedRose.updateQuality();
+      expect(items[0].quality).toEqual(9);
+    });
+
+    it('should not reduce quality below 0', () => {
+      const gildedRose = new Shop([new RegularItem(itemName, 20, 0)]);
+      const items = gildedRose.updateQuality();
+      expect(items[0].quality).toEqual(0);
+    });
+
+    it('should lower the sellIn value by 1', () => {
+      const gildedRose = new Shop([new RegularItem(itemName, 20, 10)]);
+      const items = gildedRose.updateQuality();
+      expect(items[0].sellIn).toEqual(19);
+    });
+
+    it('should reduce quality by 2 when item is overdue', () => {
+      const gildedRose = new Shop([new RegularItem(itemName, 0, 10)]);
+      const items = gildedRose.updateQuality();
+      expect(items[0].quality).toEqual(8);
+    });
+  });
+
   describe('Backstage passes', () => {
     const itemName = 'Backstage passes to a TAFKAL80ETC concert';
 
